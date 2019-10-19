@@ -4,7 +4,7 @@ export default function TitleBar(props) {
   console.log(props)
   return (
     <div>
-      {props.currentUniversity ? `Essay Requirements` : `Essay Requirements - DERP`}
+      {props.selectedUniversity ? `Essay Requirements  - ${props.selectedUniversity.name}` : `Essay Requirements`}
     </div>
   )
 }

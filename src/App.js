@@ -11,19 +11,28 @@ class App extends React.Component {
     selectedUniversity: null
   }
 
+  handleSelection = (e) => {
+    const selectedUniversity = universities.find( university => university.name === e.target.innerText )
+    this.setState({selectedUniversity: selectedUniversity})
+  }
+
   render() {
 
     const universityOptions = universities.map( (university, index) => ({
-      key: index,
+      key: university.iped,
       text: university.name,
       value: index,
     }))
 
     return (
       <div>
-        <TitleBar currentUniversity={this.state.selectedUniversity}/>
+        <TitleBar selectedUniversity={this.state.selectedUniversity}/>
         <label>Please select your university</label>
-        <Dropdown placeholder="Please Select A University" search selection options={universityOptions}/>
+        <Dropdown
+          placeholder="Please Select A University"
+          search selection options={universityOptions}
+          onChange={this.handleSelection}
+        />
       </div>
     );
   }
