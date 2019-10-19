@@ -4,6 +4,8 @@ import './App.css';
 import { Dropdown } from 'semantic-ui-react'
 import TitleBar from './components/TitleBar'
 import { universities } from './universities/universities'
+import RequiredEssays from './components/RequiredEssays'
+import OptionalEssays from './components/OptionalEssays'
 
 class App extends React.Component {
 
@@ -27,12 +29,22 @@ class App extends React.Component {
     return (
       <div>
         <TitleBar selectedUniversity={this.state.selectedUniversity}/>
+        <br />
+        <br />
         <label>Please select your university</label>
         <Dropdown
           placeholder="Please Select A University"
           search selection options={universityOptions}
           onChange={this.handleSelection}
         />
+        <br />
+        <br />
+        <label>Required Essays</label>
+        {this.state.selectedUniversity ? <RequiredEssays selectedUniversity={this.state.selectedUniversity} /> : <p>Please select a univeristy </p>}
+        <br/>
+        <br/>
+        <label>Optional Essays</label>
+        {this.state.selectedUniversity ? <OptionalEssays selectedUniversity={this.state.selectedUniversity} /> : <p>Please select a univeristy </p>}
       </div>
     );
   }
