@@ -1,28 +1,20 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { authToken } from './authToken/authToken.js'
+import { DropDown } from 'semantic-ui-react'
 
 class App extends React.Component {
 
   state = {
-    allUniversities: []
+    selectedUniversity: null
   }
 
-  // componentDidMount() {
-  //   fetch('http://localhost:3000/api/v1/profile', {
-  //     method: 'GET',
-  //     headers: {
-  //       Authorization: `Token <token>`
-  //     }
-  //   })
-  // }
-
   render() {
-    console.log(authToken)
     return (
-      <div className="App">
-        Hello World!
+      <div>
+        <TitleBar currentUniversity={this.state.selectedUniversity}/>
+        <label>Please select your university</label>
+
       </div>
     );
   }
