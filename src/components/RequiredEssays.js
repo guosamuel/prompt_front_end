@@ -1,4 +1,5 @@
 import React from 'react'
+import EssayCard from './EssayCard'
 
 export default function RequiredEssays(props) {
   const essays = []
@@ -15,12 +16,18 @@ export default function RequiredEssays(props) {
     }
   })
 
-  const essayNames = essays.map( (essay,index) => <li key={index}>{essay.name}</li> )
+  const essayCards = essays.map( essay => {
+    return (
+      <li key={essay.slug}>
+        <EssayCard essay={essay}/>
+      </li>
+    )
+  })
 
   return (
     <div>
       <ul>
-        {essayNames}
+        {essayCards}
       </ul>
     </div>
   )
