@@ -15,7 +15,6 @@ export default function EssayCard(props) {
   return (
     <div>
       <label>{props.essay.name}</label>
-      <label>Prompts</label>
       <ul>
         {promptCards}
       </ul>
