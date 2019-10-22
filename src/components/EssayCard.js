@@ -7,7 +7,10 @@ export default function EssayCard(props) {
   const promptCards = prompts.map( prompt => {
     return (
       <li key={prompt.slug}>
-        <PromptCard prompt={prompt}/>
+        <PromptCard
+          prompt={prompt}
+          handleDescriptionSubmit={props.handleDescriptionSubmit}
+        />
       </li>
     )
   })

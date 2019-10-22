@@ -10,11 +10,6 @@ export default class PromptCard extends React.Component {
     this.setState({description: e.target.value})
   }
 
-  handleDescriptionSubmit = (e, slug) => {
-    e.preventDefault()
-    console.log(slug)
-  }
-
   render() {
     console.log(this.state.description)
     return (
@@ -26,7 +21,7 @@ export default class PromptCard extends React.Component {
         <br />
 
         <label>Prompt: </label>
-        <form onSubmit={(e, slug) => this.handleDescriptionSubmit(e, this.props.prompt.slug)}>
+        <form onSubmit={(e, slug) => this.props.handleDescriptionSubmit(e, this.props.prompt.slug)}>
           <textarea
             rows='5'
             cols='100'

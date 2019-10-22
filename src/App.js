@@ -18,8 +18,12 @@ class App extends React.Component {
     this.setState({selectedUniversity: selectedUniversity})
   }
 
-  render() {
+  handleDescriptionSubmit = (e, slug) => {
+    e.preventDefault()
+    console.log(slug)
+  }
 
+  render() {
     const universityOptions = universities.map( (university, index) => ({
       key: university.iped,
       text: university.name,
@@ -40,11 +44,20 @@ class App extends React.Component {
         <br />
         <br />
         <label>Required Essays</label>
-        {this.state.selectedUniversity ? <RequiredEssays selectedUniversity={this.state.selectedUniversity} /> : <p>Please select a univeristy </p>}
+        {this.state.selectedUniversity ?
+          <RequiredEssays
+            selectedUniversity={this.state.selectedUniversity}
+            handleDescriptionSubmit={this.handleDescriptionSubmit}
+          /> :
+          <p>Please select a univeristy </p>}
         <br/>
         <br/>
         <label>Optional Essays</label>
-        {this.state.selectedUniversity ? <OptionalEssays selectedUniversity={this.state.selectedUniversity} /> : <p>Please select a univeristy </p>}
+        {this.state.selectedUniversity ?
+          <OptionalEssays
+            selectedUniversity={this.state.selectedUniversity}
+            handleDescriptionSubmit={this.handleDescriptionSubmit}
+          /> : <p>Please select a univeristy </p>}
       </div>
     );
   }

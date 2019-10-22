@@ -19,7 +19,10 @@ export default function RequiredEssays(props) {
   const essayCards = essays.map( essay => {
     return (
       <li key={essay.slug}>
-        <EssayCard essay={essay}/>
+        <EssayCard
+          essay={essay}
+          handleDescriptionSubmit={props.handleDescriptionSubmit} 
+        />
       </li>
     )
   })
