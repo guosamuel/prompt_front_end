@@ -10,6 +10,12 @@ export default class PromptCard extends React.Component {
     this.setState({description: e.target.value})
   }
 
+  componentDidUpdate(prevProps) {
+    if (this.props.prompt.prompt !== prevProps.prompt.prompt) {
+      this.setState({description: this.props.prompt.prompt})
+    }
+  }
+
   render() {
     return (
       <div id={this.props.prompt.slug}>

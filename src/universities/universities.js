@@ -335,6 +335,15 @@ export const universities = [
                     "min_length": null,
                     "recommended_length": null,
                     "display_length": ""
+                },
+                {
+                    "slug": "4212dbce-2a3c-404f-8f23-97f18e2b74f0",
+                    "prompt": "<p><strong>Expelled, suspended, disciplined, or placed on probation?</strong></p><p>Have you ever been expelled, suspended, disciplined, or placed on probation by any secondary school or college you have attended because of: academic dishonesty, financial impropriety, or an offense that harmed or had the potential to harm others? Please indicate below.</p><p><strong>Criminal offense</strong></p><p>Have you ever been convicted of a criminal offense (including in juvenile court) other than minor traffic violations, or are there criminal charges pending against you at this time? Please indicate below.</p>",
+                    "topic": "School Discipline",
+                    "max_length": null,
+                    "min_length": null,
+                    "recommended_length": null,
+                    "display_length": ""
                 }
             ],
             "optional": false,

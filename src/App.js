@@ -22,14 +22,15 @@ class App extends React.Component {
   handleDescriptionSubmit = (e, slug, description) => {
     e.preventDefault()
 
+    let supplementPrompts = []
+    let applicationEssayPrompts = []
+
     this.state.selectedUniversity.supplements.forEach( (supplement, suppIndex) => {
       supplement.prompts.forEach( (prompt, promptIndex) => {
         if (prompt.slug === slug) {
 
-          this.setState( () => ({
-            ...this.state.selectedUniversity,
-            supplements: [
-              ...this.state.selectedUniversity.supplements.slice(0, suppIndex),
+          supplementPrompts = [
+            ...this.state.selectedUniversity.supplements.slice(0, suppIndex),
               {
                 ...this.state.selectedUniversity.supplements[suppIndex],
                 prompts: [
@@ -40,10 +41,8 @@ class App extends React.Component {
                   },
                   ...this.state.selectedUniversity.supplements[suppIndex].prompts.slice(promptIndex+1)
                 ]
-              },
-              ...this.state.selectedUniversity.supplements.slice(suppIndex+1)
-            ]
-          }))
+              }
+          ]
 
         }
       })
@@ -53,10 +52,8 @@ class App extends React.Component {
       appEssay.prompts.forEach( (prompt, promptIndex) => {
         if (prompt.slug === slug) {
 
-          this.setState( () => ({
-            ...this.state.selectedUniversity,
-            application_essays: [
-              ...this.state.selectedUniversity.application_essays.slice(0, appEssayIndex),
+          applicationEssayPrompts = [
+            ...this.state.selectedUniversity.application_essays.slice(0, appEssayIndex),
               {
                 ...this.state.selectedUniversity.application_essays[appEssayIndex],
                 prompts: [
@@ -69,13 +66,21 @@ class App extends React.Component {
                 ]
               },
               ...this.state.selectedUniversity.application_essays.slice(appEssayIndex+1)
-            ]
-          }))
+          ]
 
         }
       })
     })
-    // console.log("DID IT WORK?!")
+    // console.log("SUPPLEMENT", supplementPrompts, "APPESSAY", applicationEssayPrompts)
+
+    this.setState({selectedUniversity:
+     {
+       ...this.state.selectedUniversity,
+       supplements: supplementPrompts,
+       application_essays: applicationEssayPrompts
+     }
+   })
+
   }
 
   render() {
